@@ -1,6 +1,9 @@
 package observer;
 
+import java.util.ArrayList;
+
 public class GroupAdmin implements Sender{
+
     @Override
     public void register(Member obj) {
 
