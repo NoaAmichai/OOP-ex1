@@ -2,7 +2,7 @@ package observer;
 
 import java.util.ArrayList;
 
-public class GroupAdmin extends UndoableStringBuilder implements Sender{
+public class GroupAdmin implements Sender{
     private ArrayList<Member> members = new ArrayList<>();
 
     @Override
@@ -17,11 +17,11 @@ public class GroupAdmin extends UndoableStringBuilder implements Sender{
 
     @Override
     public void insert(int offset, String obj) {
+
     }
 
     @Override
     public void append(String obj) {
-        dont be stupid
 
     }
 
