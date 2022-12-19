@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class GroupAdmin implements Sender{
 
-    private ArrayList<Member> members = new ArrayList<>();
+    ArrayList<Member> members = new ArrayList<>();
     UndoableStringBuilder undoableStringBuilder = new UndoableStringBuilder();
 
     @Override
