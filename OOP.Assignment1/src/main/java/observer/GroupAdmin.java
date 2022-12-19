@@ -21,6 +21,7 @@ public class GroupAdmin extends UndoableStringBuilder implements Sender{
 
     @Override
     public void append(String obj) {
+        dont be stupid
 
     }
 

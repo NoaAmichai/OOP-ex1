@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9c9ffef0-d395-4a02-8569-91a18fcd1c9b" name="Changes" comment="" />
+    <list default="true" id="9c9ffef0-d395-4a02-8569-91a18fcd1c9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/OOP-ex1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/OOP-ex1/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -22,11 +24,13 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/noa/Documents/GitHub/OOP-ex1",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/avi/Documents/GitHub/OOP-ex1",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -42,7 +46,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1671447953993</updated>
+      <workItem from="1671452450249" duration="95000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
