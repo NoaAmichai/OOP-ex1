@@ -11,8 +11,6 @@ interface Action{
 }
 
 class UndoableStringBuilder {
-
-
     private StringBuilder stringBuilder; // delegate
     /**
      * Operations that are the reverse of those performed.
