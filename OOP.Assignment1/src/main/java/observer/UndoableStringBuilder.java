@@ -1,96 +1,139 @@
 package observer;
+import java.lang.StringBuilder;
+        import java.util.EmptyStackException;
+        import java.util.Stack;
 
-import java.util.Stack;
 /**
- * StringBuilder with undo support
- * java.lang.StringBuilder - class with modifier <b>final</b>,
- * so no inheritance, use delegation.
+ * this Class performs all actions of StringBuilder with the addition of the Undo action.
+ *
+ * @author Avi ostroff and Noa Amichai.
+ * @version 1.0
  */
-interface Action{
-    void undo();
-}
 
-class UndoableStringBuilder {
-    private StringBuilder stringBuilder; // delegate
+public class UndoableStringBuilder {
+    private StringBuilder str;
+    private final Stack<String> stk;
+
     /**
-     * Operations that are the reverse of those performed.
-     * That is, when append is called, it is placed on the stack
-     * "delete" operation. When calling undo() it
-     * will be executed.    */
-    private Stack<Action> actions = new Stack<>();
-
-    // constructor
+     * constructor
+     */
     public UndoableStringBuilder() {
-        stringBuilder = new StringBuilder();
+        str = new StringBuilder();
+        stk = new Stack<>();
     }
 
-    public UndoableStringBuilder reverse() {
-        stringBuilder.reverse();
-        Action action = new Action(){
-            public void undo() {
-                stringBuilder.reverse();
-            }
-        };
-        actions.add(action);
-        return this;
-    }
-
-    public UndoableStringBuilder append(String str) {
-        stringBuilder.append(str);
-
-        Action action = new Action(){
-            public void undo() {
-                stringBuilder.delete(
-                        stringBuilder.length() - str.length(),
-                        stringBuilder.length());
-            }
-        };
-        actions.add(action);
-        return this;
-    }
-
-    public UndoableStringBuilder insert(int offset, String str) {
-        stringBuilder.insert(offset, str);
-        Action action = new Action(){
-            public void undo() {
-                stringBuilder.delete(offset, offset+str.length());
-            }
-        };
-        actions.add(action);
-        return this;
-    }
-
+    /**
+     * Removes the characters in a substring of this sequence.
+     *
+     * @param start-the start of the substring that will be removed.
+     * @param end-the   end of the substring that will be removed.
+     * @return returns the sequence after removing the substring.
+     */
     public UndoableStringBuilder delete(int start, int end) {
-        String deleted = stringBuilder.substring(start, end);
-        stringBuilder.delete(start, end);
-        Action action = new Action(){
-            public void undo() {
-                stringBuilder.insert(start, deleted);
-            }
-        };
-        actions.add(action);
-        return this;
-    }
-
-    public UndoableStringBuilder replace(int start, int end, String str) {
-        String deleted = stringBuilder.substring(start, end);
-        stringBuilder.replace(start, end, str);
-        Action action = new Action(){
-            public void undo() {
-                stringBuilder.replace(start, start+str.length(), deleted);
-            }
-        };
-        actions.add(action);
-        return this;
-    }
-
-    public void undo(){
-        if(!actions.isEmpty()){
-            actions.pop().undo();
+        try {
+            str.delete(start, end);
+            stk.push(this.str.toString());
+        } catch (StringIndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+            System.out.println("Invalid index");
         }
+        return this;
     }
 
+    /**
+     * The method inserts the string into this character sequence.
+     *
+     * @param offset -The starting position of where to insert the String.
+     * @param str    -The string we want to insert.
+     * @return returns the Sequence after adding the String that was
+     * requested to insert.
+     */
+    public UndoableStringBuilder insert(int offset, String str) {
+        try {
+            this.str.insert(offset, str);
+            stk.push(this.str.toString());
+        } catch (StringIndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+            System.out.println("the offset you have entered is out of bounds");
+        }
+        return this;
+    }
+
+    /**
+     * Replaces the characters in a substring of this sequence with characters in
+     * the specified String.
+     *
+     * @param start-start of the string that will be replaced.
+     * @param end-end     of the string that will be replaced.
+     * @param str-the     string that will replace the old substring.
+     * @return the method will return the new sequence.
+     */
+    public UndoableStringBuilder replace(int start, int end, String str) {
+        if (str == null) {
+            return this;
+        }
+        try {
+            this.str.replace(start, end, str);
+            stk.push(this.str.toString());
+        } catch (StringIndexOutOfBoundsException ex) {
+            ex.printStackTrace();
+            System.out.println("The input you have entered is invalid");
+        }
+        return this;
+    }
+
+    /**
+     * This method gets a String as StringBuilder and Causes this character sequence
+     * to be replaced by the reverse of the sequence.
+     *
+     * @return the method returns the reversed sequence.
+     */
+    public UndoableStringBuilder reverse() {
+        str = str.reverse();
+        stk.push(str.toString());
+        return this;
+    }
+
+    /**
+     * The method receives a string as input and
+     * appends the specified string to this character sequence.
+     *
+     * @param str -the String the method receives.
+     * @return the method returns the sequence after adding the String at the end.
+     */
+    public UndoableStringBuilder append(String str) {
+        this.str.append(str);
+        stk.push(this.str.toString());
+        return this;
+    }
+
+    /**
+     * Undoes the last action performed on the Sequence.
+     *
+     * @return the method returns the sequence from the last action.
+     */
+
+    public void undo() {
+        if (stk.size() == 0) {
+            return;
+        }
+        if (stk.size() == 1) {
+            int len = stk.pop().length();
+            str.replace(0, len, "");
+            return;
+        }
+        try {
+            int len = stk.pop().length();
+            str.replace(0, len, stk.peek());
+        } catch (EmptyStackException ex) {
+            ex.printStackTrace();
+            System.out.println("Can't do undo on empty stack");
+        }
+        return;
+    }
+
+    @Override
     public String toString() {
-        return stringBuilder.toString();
+        return str.toString();
     }
 }

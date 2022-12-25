@@ -9,4 +9,14 @@ public class ConcreteMember implements Member {
     public void update(UndoableStringBuilder usb) {
         info = usb;
     }
+    public UndoableStringBuilder getInfo() {
+        return info;
+    }
+
+    @Override
+    public String toString() {
+        return "ConcreteMember{" +
+                "info=" + info +
+                '}';
+    }
 }
