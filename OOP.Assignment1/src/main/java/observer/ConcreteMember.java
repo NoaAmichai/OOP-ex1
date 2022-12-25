@@ -1,7 +1,5 @@
 package observer;
 
-import java.util.Stack;
-
 public class ConcreteMember implements Member {
     private UndoableStringBuilder info;
 

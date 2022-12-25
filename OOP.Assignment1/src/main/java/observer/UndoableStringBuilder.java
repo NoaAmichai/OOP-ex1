@@ -109,8 +109,6 @@ public class UndoableStringBuilder {
 
     /**
      * Undoes the last action performed on the Sequence.
-     *
-     * @return the method returns the sequence from the last action.
      */
 
     public void undo() {
