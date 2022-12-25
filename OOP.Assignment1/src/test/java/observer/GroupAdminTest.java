@@ -31,9 +31,6 @@ class GroupAdminTest {
         admin.register(member1);
         admin.register(member2);
         admin.register(member3);
-        if (admin.members.size() == 3) {
-            System.out.println("YES");
-        }
         admin.append("noa");
         admin.insert(2,"avi");
         admin.unregister(member3);
@@ -48,17 +45,55 @@ class GroupAdminTest {
 
     @Test
     void insert() {
+        admin.register(member1);
+        admin.register(member2);
+        admin.register(member3);
+        admin.append("noa");
+        admin.insert(2,"avi");
+        for (Member member:admin.members) {
+            assertEquals(admin.undoableStringBuilder,((ConcreteMember)member).getInfo());
+        }
     }
 
     @Test
     void append() {
+        admin.register(member1);
+        admin.register(member2);
+        admin.register(member3);
+        admin.append("noa");
+        admin.insert(2,"avi");
+        admin.append("goodbye world");
+        for (Member member:admin.members) {
+            assertEquals(admin.undoableStringBuilder,((ConcreteMember)member).getInfo());
+        }
     }
 
     @Test
     void delete() {
+        admin.register(member1);
+        admin.register(member2);
+        admin.register(member3);
+        admin.append("noa");
+        admin.insert(2,"avi");
+        admin.append("goodbye world");
+        admin.delete(3,7);
+        for (Member member:admin.members) {
+            assertEquals(admin.undoableStringBuilder,((ConcreteMember)member).getInfo());
+        }
     }
 
     @Test
     void undo() {
+        admin.register(member1);
+        admin.register(member2);
+        admin.register(member3);
+        admin.append("noa");
+        admin.insert(2,"avi");
+        admin.append(" goodbye world");
+        admin.delete(3,7);
+        admin.undo();
+        for (Member member:admin.members) {
+            assertEquals(admin.undoableStringBuilder,((ConcreteMember)member).getInfo());
+        }
     }
 }
