@@ -3,7 +3,6 @@ package observer;
 import java.util.ArrayList;
 
 public class GroupAdmin implements Sender {
-
     ArrayList<Member> members = new ArrayList<>();
     UndoableStringBuilder undoableStringBuilder = new UndoableStringBuilder();
 
@@ -65,4 +64,12 @@ public class GroupAdmin implements Sender {
             member.update(undoableStringBuilder);
         }
     }
+
+    public void reverse(){
+        undoableStringBuilder.reverse();
+        for (Member member : this.members) {
+            member.update(undoableStringBuilder);
+        }
+    }
+
 }
