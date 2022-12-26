@@ -12,21 +12,20 @@ class ConcreteMemberTest {
 
     @Test
     void update() {
-        System.out.println(JvmUtilities.objectFootprint(admin));
-        System.out.println(JvmUtilities.objectFootprint(member1));
         String concreteSize=JvmUtilities.objectTotalSize(member1);
         admin.register(member1);
-        System.out.println(JvmUtilities.objectFootprint(member1));
         admin.unregister(member1);
         assertEquals(JvmUtilities.objectTotalSize(member1),concreteSize);
+
         admin.append("Check that the member doesn't get updates from the admin");
         admin.register(member1);
-        System.out.println("member 1 size");
-        System.out.println(JvmUtilities.objectTotalSize(member1));
-        admin.register(member1);
         admin.register(member2);
-        System.out.println("member 2 size after register");
-        System.out.println(JvmUtilities.objectFootprint(member2));
+        assertEquals(JvmUtilities.objectTotalSize(member1),JvmUtilities.objectTotalSize(member2)); //both members should be in the same size
+
+        admin.unregister(member1);
+        assertNotEquals(JvmUtilities.objectTotalSize(member1),JvmUtilities.objectTotalSize(member2)); //after unregister members size should be different
+
+        admin.register(member1);
         admin.append("Check that both members have received an update");
         assertEquals(member1.getInfo(),member2.getInfo());
 

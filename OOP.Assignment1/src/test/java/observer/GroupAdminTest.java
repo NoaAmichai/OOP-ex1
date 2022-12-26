@@ -99,8 +99,6 @@ class GroupAdminTest {
         }
     }
 
-
-
     @Test
     void jvmTest() {
         admin.register(member1);
@@ -118,13 +116,5 @@ class GroupAdminTest {
         assertNotEquals(JvmUtilities.objectTotalSize(admin),adminSizeB); //after we unregistered member 1 the memory of admin is smaller
 
 
-//
-//        logger.info(()->JvmUtilities.objectTotalSize(admin));
-//
-//        logger.info(() -> JvmUtilities.objectFootprint(member1, member2));
-//
-//        logger.info(() -> JvmUtilities.objectTotalSize(member1));
-//
-//        logger.info(() -> JvmUtilities.jvmInfo());
     }
 }
