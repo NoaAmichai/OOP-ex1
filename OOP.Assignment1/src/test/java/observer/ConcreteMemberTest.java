@@ -11,7 +11,7 @@ class ConcreteMemberTest {
 
     @Test
     void update() {
-        System.out.println(JvmUtilities.objectTotalSize(admin));
+        System.out.println(JvmUtilities.objectFootprint(admin));
         admin.register(member1);
         admin.unregister(member1);
         admin.register(member1);
@@ -25,6 +25,7 @@ class ConcreteMemberTest {
         admin.register(member1);
         System.out.println(JvmUtilities.objectFootprint(admin));
         admin.register(member2);
+        System.out.println(JvmUtilities.objectFootprint(admin));
         admin.unregister(member2);
         admin.unregister(member1);
         System.out.println(JvmUtilities.objectTotalSize(admin));
