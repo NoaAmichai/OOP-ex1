@@ -13,34 +13,33 @@ class GroupAdminTest {
 
     @Test
     void register() {
+
         admin.register(member1);
         admin.register(member2);
         admin.register(member3);
-        if (admin.members.size() == 3) {
-            System.out.println("YES");
-        }
+        assertEquals(admin.members.size() ,3);
+
         admin.append("noa");
         admin.insert(2,"avi");
-        System.out.println(admin.undoableStringBuilder.toString());
         assertEquals(admin.undoableStringBuilder,member1.getInfo());
-
     }
 
     @Test
     void unregister() {
+        admin.unregister(member1); //unregister a member before register
+        assertEquals(admin.undoableStringBuilder.toString(),"");
+
         admin.register(member1);
         admin.register(member2);
         admin.register(member3);
         admin.append("noa");
+        admin.append("");
         admin.insert(2,"avi");
         admin.unregister(member3);
         admin.append(" hi");
-        System.out.println(member1.toString());
-        System.out.println(member2.toString());
-        System.out.println(member3.toString());
-        System.out.println(admin.undoableStringBuilder.toString());
         assertEquals(admin.undoableStringBuilder,member1.getInfo());
         assertNotEquals(admin.undoableStringBuilder,member3.getInfo());
+
     }
 
     @Test
