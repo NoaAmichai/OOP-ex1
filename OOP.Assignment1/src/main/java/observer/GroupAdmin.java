@@ -8,14 +8,16 @@ public class GroupAdmin implements Sender {
 
     @Override
     public void register(Member obj) {
+        if(members.contains(obj)){
+            return;
+        }
         members.add(obj);
     }
 
     @Override
     public void unregister(Member obj) {
-        UndoableStringBuilder rem = new UndoableStringBuilder();
         members.remove(obj);
-        obj.update(rem);
+        obj.update(null);
     }
 
     @Override
