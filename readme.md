@@ -9,4 +9,5 @@ observer explanation:In software design and engineering, the observer pattern is
 maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 more about observer here:https://en.wikipedia.org/wiki/Observer_pattern#:~:text=In%20software%20design%20and%20engineering,calling%20one%20of%20their%20methods.
 
+![image](https://user-images.githubusercontent.com/28539893/209655455-32e20343-f897-4590-9876-d66202e41ba9.png)
 
