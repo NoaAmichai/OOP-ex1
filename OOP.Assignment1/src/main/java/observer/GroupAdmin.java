@@ -3,8 +3,18 @@ package observer;
 import java.util.ArrayList;
 
 public class GroupAdmin implements Sender {
-    ArrayList<Member> members = new ArrayList<>();
-    UndoableStringBuilder undoableStringBuilder = new UndoableStringBuilder();
+    private ArrayList<Member> members = new ArrayList<>();
+    private UndoableStringBuilder undoableStringBuilder = new UndoableStringBuilder();
+
+    //Getter for members list
+    public ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    //Getter for undoableStringBuilder
+    public UndoableStringBuilder getUndoableStringBuilder() {
+        return undoableStringBuilder;
+    }
 
     @Override
     public void register(Member obj) {
