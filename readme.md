@@ -5,8 +5,9 @@ It is not a finished design that can be transformed directly into source or mach
 Design patterns are formalized best practices that the programmer can use to solve common problems when designing an application or system.
 more about design patterns here:https://en.wikipedia.org/wiki/Software_design_pattern
 
-
-Observer explanation:In software design and engineering, the observer pattern is a software design pattern in which an object, named the subject,
+**What is the Observer design pattern?**
+ 
+In software design and engineering, the observer pattern is a software design pattern in which an object, named the subject,
 maintains a list of its dependents, called observers, and notifies them automatically of any state changes, usually by calling one of their methods.
 more about observer here:https://en.wikipedia.org/wiki/Observer_pattern#:~:text=In%20software%20design%20and%20engineering,calling%20one%20of%20their%20methods.
 
