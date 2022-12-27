@@ -18,12 +18,12 @@ more about observer here:https://en.wikipedia.org/wiki/Observer_pattern#:~:text=
 We built a class called GroupAdmin that is our Observable. GroupAdmin holds a list of members and String of type UndoableStringBuilder.
 
 It has the following methods :
-*register
-*unregister
-*append
-*insert
-*delete
-*undo
+* register
+* unregister
+* append
+* insert
+* delete
+* undo
 
 If you would like to know more about the methods, we documented them with javadoc.
 
