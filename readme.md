@@ -11,3 +11,5 @@ more about observer here:https://en.wikipedia.org/wiki/Observer_pattern#:~:text=
 
 ![image](https://user-images.githubusercontent.com/28539893/209655455-32e20343-f897-4590-9876-d66202e41ba9.png)
 
+lets go over our project:
+
