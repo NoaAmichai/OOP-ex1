@@ -34,6 +34,9 @@ public class GroupAdmin implements Sender {
     @Override
     public void insert(int offset, String obj) {
         undoableStringBuilder.insert(offset, obj);
+        for (Member member:members) {
+            member.update(undoableStringBuilder);
+        }
     }
 
     /***
@@ -44,6 +47,9 @@ public class GroupAdmin implements Sender {
     @Override
     public void append(String obj) {
         undoableStringBuilder.append(obj);
+        for (Member member:members) {
+            member.update(undoableStringBuilder);
+        }
     }
 
     /**
@@ -55,6 +61,9 @@ public class GroupAdmin implements Sender {
     @Override
     public void delete(int start, int end) {
         undoableStringBuilder.delete(start, end);
+        for (Member member:members) {
+            member.update(undoableStringBuilder);
+        }
     }
 
     /**
@@ -64,10 +73,16 @@ public class GroupAdmin implements Sender {
     @Override
     public void undo() {
         undoableStringBuilder.undo();
+        for (Member member:members) {
+            member.update(undoableStringBuilder);
+        }
     }
 
     public void reverse(){
         undoableStringBuilder.reverse();
+        for (Member member:members) {
+            member.update(undoableStringBuilder);
+        }
     }
 
 }
